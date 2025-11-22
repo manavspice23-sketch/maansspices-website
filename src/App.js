@@ -93,7 +93,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router basename="/maansspices-website">
+      <Router basename="/">
         <Box
           sx={{
             display: 'flex',

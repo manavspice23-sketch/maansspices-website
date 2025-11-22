@@ -20,6 +20,7 @@ import {
   CircularProgress
 } from '@mui/material';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import PersonIcon from '@mui/icons-material/Person';
@@ -63,15 +64,28 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      // In a real implementation, you would send this data to your backend
-      // which would then send an email to spices@maansindustries.com
-      console.log('Form submitted:', formData);
+    try {
+      // EmailJS configuration - using the same template for all forms
+      // Production fallbacks (safe to expose - EmailJS public keys are meant to be public)
+      const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID || 'service_y5ndcad';
+      const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || 'template_jwe6d1b';
+      const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || 'oQkq8ReYRtBAXH7qK';
+      
+      // Initialize EmailJS
+      emailjs.init(publicKey);
+      
+      // Send email using EmailJS
+      await emailjs.send(serviceId, templateId, {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: 'spices@maansindustries.com'
+      });
       
       // Reset form
       setFormData({
@@ -87,9 +101,16 @@ const Contact = () => {
         message: 'Your message has been sent successfully! We will get back to you soon.',
         severity: 'success'
       });
-      
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setSnackbar({
+        open: true,
+        message: 'Failed to send message. Please try again or contact us directly at spices@maansindustries.com',
+        severity: 'error'
+      });
+    } finally {
       setLoading(false);
-    }, 1500);
+    }
   };
 
   const handleCloseSnackbar = () => {

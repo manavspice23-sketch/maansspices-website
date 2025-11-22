@@ -31,6 +31,7 @@ import {
   Snackbar
 } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import CloseIcon from '@mui/icons-material/Close';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
@@ -387,33 +388,41 @@ const Products = () => {
     event.preventDefault();
     setLoading(true);
 
-    // Prepare email data
-    const emailData = {
-      to: 'spices@maansindustries.com',
-      subject: `Quote Request for ${selectedProduct?.name}`,
-      data: {
-        productName: selectedProduct?.name,
-        customerName: quoteFormData.name,
-        customerEmail: quoteFormData.email,
-        companyName: quoteFormData.company,
-        quantity: quoteFormData.quantity,
-        message: quoteFormData.message,
-        exportTypes: selectedProduct?.exportType.join(', '),
-        varieties: selectedProduct?.varieties ? selectedProduct?.varieties.join(', ') : 'N/A'
-      }
-    };
-
     try {
-      // Here you would typically send this data to your backend API
-      // For example:
-      // await fetch('/api/send-quote', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(emailData)
-      // });
+      // EmailJS configuration - using the same template for all forms
+      // Production fallbacks (safe to expose - EmailJS public keys are meant to be public)
+      const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID || 'service_y5ndcad';
+      const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || 'template_jwe6d1b';
+      const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || 'oQkq8ReYRtBAXH7qK';
+      
+      // Initialize EmailJS
+      emailjs.init(publicKey);
+      
+      // Prepare the message with all quote details
+      const quoteMessage = `Quote Request for: ${selectedProduct?.name || 'N/A'}
 
-      // For now, we'll simulate the API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
+Product Details:
+- Product: ${selectedProduct?.name || 'N/A'}
+- Varieties: ${selectedProduct?.varieties ? selectedProduct.varieties.join(', ') : 'N/A'}
+- Export Types: ${selectedProduct?.exportType.join(', ') || 'N/A'}
+
+Customer Information:
+- Name: ${quoteFormData.name}
+- Email: ${quoteFormData.email}
+- Company: ${quoteFormData.company}
+- Required Quantity: ${quoteFormData.quantity}
+
+Message:
+${quoteFormData.message}`;
+      
+      // Send email using EmailJS
+      await emailjs.send(serviceId, templateId, {
+        from_name: quoteFormData.name,
+        from_email: quoteFormData.email,
+        subject: `Quote Request for ${selectedProduct?.name || 'Product'}`,
+        message: quoteMessage,
+        to_email: 'spices@maansindustries.com'
+      });
       
       setSnackbar({
         open: true,
@@ -422,9 +431,10 @@ const Products = () => {
       });
       handleCloseQuoteDialog();
     } catch (error) {
+      console.error('EmailJS Error:', error);
       setSnackbar({
         open: true,
-        message: 'Failed to send quote request. Please try again.',
+        message: 'Failed to send quote request. Please try again or contact us directly at spices@maansindustries.com',
         severity: 'error'
       });
     } finally {
