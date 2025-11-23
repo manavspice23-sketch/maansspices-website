@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { 
-  Box, 
-  Container, 
-  Typography, 
-  Grid, 
+import {
+  Box,
+  Container,
+  Typography,
+  Grid,
   Paper,
   Divider,
   List,
@@ -67,17 +67,17 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    
+
     try {
       // EmailJS configuration - using the same template for all forms
       // Production fallbacks (safe to expose - EmailJS public keys are meant to be public)
       const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID || 'service_y5ndcad';
       const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || 'template_jwe6d1b';
       const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || 'oQkq8ReYRtBAXH7qK';
-      
+
       // Initialize EmailJS
       emailjs.init(publicKey);
-      
+
       // Send email using EmailJS
       await emailjs.send(serviceId, templateId, {
         from_name: formData.name,
@@ -86,7 +86,7 @@ const Contact = () => {
         message: formData.message,
         to_email: 'spices@maansindustries.com'
       });
-      
+
       // Reset form
       setFormData({
         name: '',
@@ -94,7 +94,7 @@ const Contact = () => {
         subject: '',
         message: ''
       });
-      
+
       // Show success message
       setSnackbar({
         open: true,
@@ -121,9 +121,8 @@ const Contact = () => {
   };
 
   return (
-    <Box sx={{ 
-      py: { xs: 4, sm: 6, md: 8 },
-      pt: { xs: '80px', sm: '100px', md: 8 },
+    <Box sx={{
+      py: { xs: 10, sm: 12 },
       backgroundColor: '#FFF8E1',
       position: 'relative',
       overflow: 'hidden',
@@ -148,9 +147,9 @@ const Contact = () => {
             variant="h3"
             component="h1"
             align="center"
-            sx={{ 
-              mb: 2, 
-              fontWeight: 700, 
+            sx={{
+              mb: 2,
+              fontWeight: 700,
               color: '#B71C1C',
               fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
               position: 'relative',
@@ -172,10 +171,10 @@ const Contact = () => {
           <Typography
             variant="h6"
             align="center"
-            sx={{ 
+            sx={{
               mb: { xs: 4, sm: 5, md: 6 },
-              color: '#5D4037', 
-              maxWidth: '800px', 
+              color: '#5D4037',
+              maxWidth: '800px',
               mx: 'auto',
               fontSize: { xs: '0.9rem', sm: '1rem', md: '1.1rem' },
               px: { xs: 2, sm: 0 },
@@ -193,9 +192,9 @@ const Contact = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <Paper 
+              <Paper
                 elevation={0}
-                sx={{ 
+                sx={{
                   p: { xs: 2, sm: 3, md: 4 },
                   height: '100%',
                   borderRadius: 3,
@@ -208,12 +207,12 @@ const Contact = () => {
                   }
                 }}
               >
-                <Typography 
-                  variant="h5" 
-                  component="h2" 
-                  gutterBottom 
-                  sx={{ 
-                    fontWeight: 700, 
+                <Typography
+                  variant="h5"
+                  component="h2"
+                  gutterBottom
+                  sx={{
+                    fontWeight: 700,
                     color: '#B71C1C',
                     mb: 3,
                     position: 'relative',
@@ -237,8 +236,8 @@ const Contact = () => {
                     <ListItemIcon>
                       <LocationOnIcon sx={{ color: '#B71C1C', fontSize: 28 }} />
                     </ListItemIcon>
-                    <ListItemText 
-                      primary="Address" 
+                    <ListItemText
+                      primary="Address"
                       secondary="Popat para, Junu ITI, Chotila - 363520"
                       primaryTypographyProps={{ fontWeight: 600, color: '#3E2723' }}
                       secondaryTypographyProps={{ color: '#5D4037' }}
@@ -249,8 +248,8 @@ const Contact = () => {
                     <ListItemIcon>
                       <EmailIcon sx={{ color: '#B71C1C', fontSize: 28 }} />
                     </ListItemIcon>
-                    <ListItemText 
-                      primary="Email" 
+                    <ListItemText
+                      primary="Email"
                       secondary="spices@maansindustries.com"
                       primaryTypographyProps={{ fontWeight: 600, color: '#3E2723' }}
                       secondaryTypographyProps={{ color: '#5D4037' }}
@@ -262,18 +261,18 @@ const Contact = () => {
                       <ListItemIcon>
                         <PersonIcon sx={{ color: '#B71C1C', fontSize: 28 }} />
                       </ListItemIcon>
-                      <ListItemText 
+                      <ListItemText
                         primary={person.name}
                         secondary={
                           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 0.5 }}>
                             <Typography variant="body2" color="text.secondary">
                               {person.phone}
                             </Typography>
-                            <IconButton 
-                              size="small" 
+                            <IconButton
+                              size="small"
                               href={`https://wa.me/91${person.phone}`}
                               target="_blank"
-                              sx={{ 
+                              sx={{
                                 color: '#25D366',
                                 '&:hover': { transform: 'scale(1.1)' }
                               }}
@@ -291,11 +290,11 @@ const Contact = () => {
 
                 <Divider sx={{ my: 3, borderColor: 'rgba(0, 0, 0, 0.1)' }} />
 
-                <Typography 
-                  variant="h6" 
-                  gutterBottom 
-                  sx={{ 
-                    fontWeight: 600, 
+                <Typography
+                  variant="h6"
+                  gutterBottom
+                  sx={{
+                    fontWeight: 600,
                     color: '#B71C1C',
                     mb: 2
                   }}
@@ -309,10 +308,10 @@ const Contact = () => {
                     'Get assistance with your orders',
                     'Schedule a meeting with our team'
                   ].map((item, index) => (
-                    <Typography 
+                    <Typography
                       key={index}
-                      variant="body2" 
-                      sx={{ 
+                      variant="body2"
+                      sx={{
                         color: '#5D4037',
                         display: 'flex',
                         alignItems: 'center',
@@ -340,9 +339,9 @@ const Contact = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <Paper 
+              <Paper
                 elevation={0}
-                sx={{ 
+                sx={{
                   p: { xs: 2, sm: 3, md: 5 },
                   borderRadius: 3,
                   background: 'linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%)',
@@ -368,12 +367,12 @@ const Contact = () => {
                 }}
               >
                 <Box sx={{ position: 'relative', zIndex: 1 }}>
-                  <Typography 
-                    variant="h5" 
-                    component="h2" 
-                    gutterBottom 
-                    sx={{ 
-                      fontWeight: 700, 
+                  <Typography
+                    variant="h5"
+                    component="h2"
+                    gutterBottom
+                    sx={{
+                      fontWeight: 700,
                       color: '#B71C1C',
                       mb: 4,
                       position: 'relative',
@@ -577,14 +576,14 @@ const Contact = () => {
         </Grid>
       </Container>
 
-      <Snackbar 
-        open={snackbar.open} 
-        autoHideDuration={6000} 
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={6000}
         onClose={handleCloseSnackbar}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       >
-        <Alert 
-          onClose={handleCloseSnackbar} 
+        <Alert
+          onClose={handleCloseSnackbar}
           severity={snackbar.severity}
           sx={{ width: '100%' }}
         >

@@ -1,12 +1,12 @@
 import React from 'react';
-import { 
-  Box, 
-  Container, 
-  Typography, 
-  Grid, 
-  Card, 
-  CardContent, 
-  CardMedia, 
+import {
+  Box,
+  Container,
+  Typography,
+  Grid,
+  Card,
+  CardContent,
+  CardMedia,
   Button,
   Divider,
   Paper,
@@ -71,8 +71,8 @@ const Blog = () => {
   const paragraphs = featuredBlog.content.split('\n\n');
 
   return (
-    <Box sx={{ 
-      py: 8, 
+    <Box sx={{
+      py: { xs: 10, sm: 12 },
       backgroundColor: '#FFF8E1',
       position: 'relative',
       overflow: 'hidden',
@@ -104,8 +104,8 @@ const Blog = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Box sx={{ 
-            textAlign: 'center', 
+          <Box sx={{
+            textAlign: 'center',
             mb: 6,
             position: 'relative',
             '&::after': {
@@ -123,9 +123,9 @@ const Blog = () => {
             <Typography
               variant="h3"
               component="h1"
-              sx={{ 
-                mb: 2, 
-                fontWeight: 700, 
+              sx={{
+                mb: 2,
+                fontWeight: 700,
                 color: '#B71C1C',
                 position: 'relative',
                 display: 'inline-block',
@@ -135,9 +135,9 @@ const Blog = () => {
             </Typography>
             <Typography
               variant="h6"
-              sx={{ 
-                color: '#5D4037', 
-                maxWidth: '800px', 
+              sx={{
+                color: '#5D4037',
+                maxWidth: '800px',
                 mx: 'auto',
                 fontSize: { xs: '1rem', md: '1.25rem' },
                 lineHeight: 1.6
@@ -176,8 +176,8 @@ const Blog = () => {
             }}
           >
             <Box sx={{ position: 'relative', zIndex: 1 }}>
-              <Box sx={{ 
-                position: 'relative', 
+              <Box sx={{
+                position: 'relative',
                 overflow: 'hidden',
                 borderRadius: 2,
                 mb: 4,
@@ -198,7 +198,7 @@ const Blog = () => {
                   height="400"
                   image={featuredBlog.image}
                   alt={featuredBlog.title}
-                  sx={{ 
+                  sx={{
                     objectFit: 'cover',
                     width: '100%',
                     transition: 'transform 0.5s ease-in-out',
@@ -256,23 +256,23 @@ const Blog = () => {
                 >
                   {featuredBlog.title}
                 </Typography>
-                
-                <Box sx={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
+
+                <Box sx={{
+                  display: 'flex',
+                  alignItems: 'center',
                   mb: 3,
                   flexWrap: 'wrap',
                   gap: 2
                 }}>
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Avatar 
-                      src={featuredBlog.authorAvatar} 
+                    <Avatar
+                      src={featuredBlog.authorAvatar}
                       alt={featuredBlog.author}
                       sx={{ width: 40, height: 40, mr: 1 }}
                     />
-                    <Typography 
-                      variant="subtitle1" 
-                      sx={{ 
+                    <Typography
+                      variant="subtitle1"
+                      sx={{
                         fontWeight: 600,
                         color: '#3E2723'
                       }}
@@ -282,9 +282,9 @@ const Blog = () => {
                   </Box>
                   <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <AccessTimeIcon fontSize="small" sx={{ mr: 0.5, color: '#5D4037' }} />
-                    <Typography 
-                      variant="body2" 
-                      sx={{ 
+                    <Typography
+                      variant="body2"
+                      sx={{
                         color: '#5D4037',
                         display: 'flex',
                         alignItems: 'center'
@@ -302,7 +302,7 @@ const Blog = () => {
                 {paragraphs.map((paragraph, index) => {
                   // Check if this is a heading (starts with a number)
                   const isHeading = /^\d\.\s/.test(paragraph);
-                  
+
                   if (isHeading) {
                     return (
                       <Typography
@@ -349,8 +349,8 @@ const Blog = () => {
                 })}
               </Box>
 
-              <Box sx={{ 
-                display: 'flex', 
+              <Box sx={{
+                display: 'flex',
                 flexDirection: { xs: 'column', sm: 'row' },
                 gap: 2,
                 mt: 4,
@@ -376,7 +376,7 @@ const Blog = () => {
                     India is home to over 75 varieties of spices, each region contributing its own unique produce.
                   </Typography>
                 </Paper>
-                
+
                 <Paper
                   elevation={0}
                   sx={{
@@ -397,7 +397,7 @@ const Blog = () => {
                     Many Indian spices are packed with medicinal benefits, from anti-inflammatory properties to antioxidants.
                   </Typography>
                 </Paper>
-                
+
                 <Paper
                   elevation={0}
                   sx={{
@@ -421,13 +421,13 @@ const Blog = () => {
               </Box>
 
               <Box sx={{ mt: 6, textAlign: 'center' }}>
-                <Button 
-                  variant="contained" 
+                <Button
+                  variant="contained"
                   color="primary"
                   size="large"
                   endIcon={<ArrowForwardIcon />}
-                  sx={{ 
-                    py: 1.5, 
+                  sx={{
+                    py: 1.5,
                     px: 4,
                     fontWeight: 600,
                     borderRadius: 2,

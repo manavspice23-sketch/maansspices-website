@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Features from './components/Features';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import { Box } from '@mui/material';
 
 // Import pages
@@ -94,6 +95,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router basename="/">
+        <ScrollToTop />
         <Box
           sx={{
             display: 'flex',

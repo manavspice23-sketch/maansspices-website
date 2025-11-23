@@ -1,9 +1,9 @@
 import React from 'react';
-import { 
-  Box, 
-  Container, 
-  Typography, 
-  Grid, 
+import {
+  Box,
+  Container,
+  Typography,
+  Grid,
   Paper,
   Divider,
   List,
@@ -31,8 +31,8 @@ const About = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <Box sx={{ 
-      py: 8, 
+    <Box sx={{
+      py: { xs: 10, sm: 12 },
       backgroundColor: '#FFF8E1',
       position: 'relative',
       overflow: 'hidden',
@@ -64,8 +64,8 @@ const About = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Box sx={{ 
-            textAlign: 'center', 
+          <Box sx={{
+            textAlign: 'center',
             mb: 6,
             position: 'relative',
             '&::after': {
@@ -83,9 +83,9 @@ const About = () => {
             <Typography
               variant="h3"
               component="h1"
-              sx={{ 
-                mb: 2, 
-                fontWeight: 700, 
+              sx={{
+                mb: 2,
+                fontWeight: 700,
                 color: '#B71C1C',
                 position: 'relative',
                 display: 'inline-block',
@@ -97,9 +97,9 @@ const About = () => {
             </Typography>
             <Typography
               variant="h6"
-              sx={{ 
-                color: '#5D4037', 
-                maxWidth: '800px', 
+              sx={{
+                color: '#5D4037',
+                maxWidth: '800px',
                 mx: 'auto',
                 fontSize: { xs: '1rem', md: '1.25rem' },
                 lineHeight: 1.6
@@ -117,10 +117,10 @@ const About = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <Paper 
-                elevation={0} 
-                sx={{ 
-                  p: 4, 
+              <Paper
+                elevation={0}
+                sx={{
+                  p: 4,
                   height: '100%',
                   borderRadius: 3,
                   background: 'linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%)',
@@ -133,12 +133,12 @@ const About = () => {
                   }
                 }}
               >
-                <Typography 
-                  variant="h5" 
-                  component="h2" 
-                  gutterBottom 
-                  sx={{ 
-                    fontWeight: 700, 
+                <Typography
+                  variant="h5"
+                  component="h2"
+                  gutterBottom
+                  sx={{
+                    fontWeight: 700,
                     color: '#B71C1C',
                     mb: 3,
                     position: 'relative',
@@ -168,17 +168,17 @@ const About = () => {
               </Paper>
             </motion.div>
           </Grid>
-          
+
           <Grid item xs={12} md={6}>
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <Paper 
-                elevation={0} 
-                sx={{ 
-                  p: 4, 
+              <Paper
+                elevation={0}
+                sx={{
+                  p: 4,
                   height: '100%',
                   borderRadius: 3,
                   background: 'linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%)',
@@ -191,12 +191,12 @@ const About = () => {
                   }
                 }}
               >
-                <Typography 
-                  variant="h5" 
-                  component="h2" 
-                  gutterBottom 
-                  sx={{ 
-                    fontWeight: 700, 
+                <Typography
+                  variant="h5"
+                  component="h2"
+                  gutterBottom
+                  sx={{
+                    fontWeight: 700,
                     color: '#B71C1C',
                     mb: 3,
                     position: 'relative',
@@ -219,16 +219,16 @@ const About = () => {
                     <ListItemIcon>
                       <LocalShippingIcon sx={{ color: '#B71C1C' }} />
                     </ListItemIcon>
-                    <ListItemText 
-                      primary="Premium Red Chillies" 
+                    <ListItemText
+                      primary="Premium Red Chillies"
                       secondary="Our specialization lies in the export of premium Dry Red Chillies, and we are proud to be among the leading red chilli exporters in India. With a commitment to quality, freshness, and authenticity, we supply renowned varieties such as Guntur Red Chilli, among others."
-                      sx={{ 
-                        '& .MuiListItemText-primary': { 
-                          fontWeight: 600, 
+                      sx={{
+                        '& .MuiListItemText-primary': {
+                          fontWeight: 600,
                           color: '#B71C1C',
                           mb: 0.5
                         },
-                        '& .MuiListItemText-secondary': { 
+                        '& .MuiListItemText-secondary': {
                           color: '#5D4037',
                           lineHeight: 1.6
                         }
@@ -239,16 +239,16 @@ const About = () => {
                     <ListItemIcon>
                       <RestaurantIcon sx={{ color: '#B71C1C' }} />
                     </ListItemIcon>
-                    <ListItemText 
-                      primary="Wide Range of Spices" 
+                    <ListItemText
+                      primary="Wide Range of Spices"
                       secondary="At MaansSpices, we go beyond chillies—we are experienced exporters of a wide range of spices including turmeric, cumin, ginger, cinnamon, star anise, asafoetida, nutmeg, black pepper, and many more."
-                      sx={{ 
-                        '& .MuiListItemText-primary': { 
-                          fontWeight: 600, 
+                      sx={{
+                        '& .MuiListItemText-primary': {
+                          fontWeight: 600,
                           color: '#B71C1C',
                           mb: 0.5
                         },
-                        '& .MuiListItemText-secondary': { 
+                        '& .MuiListItemText-secondary': {
                           color: '#5D4037',
                           lineHeight: 1.6
                         }
@@ -259,16 +259,16 @@ const About = () => {
                     <ListItemIcon>
                       <SpaIcon sx={{ color: '#B71C1C' }} />
                     </ListItemIcon>
-                    <ListItemText 
-                      primary="Quality Assurance" 
+                    <ListItemText
+                      primary="Quality Assurance"
                       secondary="Every batch is carefully tested and approved by our Quality Control and Assurance teams, ensuring that only the best reaches your kitchen or business."
-                      sx={{ 
-                        '& .MuiListItemText-primary': { 
-                          fontWeight: 600, 
+                      sx={{
+                        '& .MuiListItemText-primary': {
+                          fontWeight: 600,
                           color: '#B71C1C',
                           mb: 0.5
                         },
-                        '& .MuiListItemText-secondary': { 
+                        '& .MuiListItemText-secondary': {
                           color: '#5D4037',
                           lineHeight: 1.6
                         }
@@ -279,16 +279,16 @@ const About = () => {
                     <ListItemIcon>
                       <LocationOnIcon sx={{ color: '#B71C1C' }} />
                     </ListItemIcon>
-                    <ListItemText 
-                      primary="Global Reach" 
+                    <ListItemText
+                      primary="Global Reach"
                       secondary="Our mission is to share the richness of Indian culture and culinary tradition with every corner of the globe."
-                      sx={{ 
-                        '& .MuiListItemText-primary': { 
-                          fontWeight: 600, 
+                      sx={{
+                        '& .MuiListItemText-primary': {
+                          fontWeight: 600,
                           color: '#B71C1C',
                           mb: 0.5
                         },
-                        '& .MuiListItemText-secondary': { 
+                        '& .MuiListItemText-secondary': {
                           color: '#5D4037',
                           lineHeight: 1.6
                         }
@@ -302,8 +302,8 @@ const About = () => {
         </Grid>
 
         <Box sx={{ mt: 8 }}>
-          <Divider sx={{ 
-            mb: 4, 
+          <Divider sx={{
+            mb: 4,
             borderColor: 'rgba(183, 28, 28, 0.2)',
             position: 'relative',
             '&::before': {
@@ -322,9 +322,9 @@ const About = () => {
             variant="h4"
             component="h2"
             align="center"
-            sx={{ 
-              mb: 4, 
-              fontWeight: 700, 
+            sx={{
+              mb: 4,
+              fontWeight: 700,
               color: '#B71C1C',
               position: 'relative',
               '&::after': {
@@ -349,10 +349,10 @@ const About = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <Paper 
-                  elevation={0} 
-                  sx={{ 
-                    p: 3, 
+                <Paper
+                  elevation={0}
+                  sx={{
+                    p: 3,
                     textAlign: 'center',
                     height: '100%',
                     borderRadius: 3,
@@ -381,10 +381,10 @@ const About = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
               >
-                <Paper 
-                  elevation={0} 
-                  sx={{ 
-                    p: 3, 
+                <Paper
+                  elevation={0}
+                  sx={{
+                    p: 3,
                     textAlign: 'center',
                     height: '100%',
                     borderRadius: 3,
@@ -413,10 +413,10 @@ const About = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <Paper 
-                  elevation={0} 
-                  sx={{ 
-                    p: 3, 
+                <Paper
+                  elevation={0}
+                  sx={{
+                    p: 3,
                     textAlign: 'center',
                     height: '100%',
                     borderRadius: 3,
@@ -445,10 +445,10 @@ const About = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
-                <Paper 
-                  elevation={0} 
-                  sx={{ 
-                    p: 3, 
+                <Paper
+                  elevation={0}
+                  sx={{
+                    p: 3,
                     textAlign: 'center',
                     height: '100%',
                     borderRadius: 3,
@@ -480,7 +480,7 @@ const About = () => {
             to="/products"
             variant="contained"
             size="large"
-            sx={{ 
+            sx={{
               fontWeight: 600,
               px: 4,
               py: 1.5,
